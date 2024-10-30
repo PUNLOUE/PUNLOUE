@@ -1,4 +1,4 @@
- //detail of menuitem
+  //detail of menuitem
  class Item {
   int itemID;
   String name;
@@ -139,38 +139,40 @@ class Order {
 }
  
  void main() {
-  // Creating a customer
-  Customer customer = Customer(1, 'Phinnaroth', 'naroth@gmail.com');
-
   // Creating menu items
-  Item item1 = Item(1, 'pizza', 15.99);
-  Item item2 = Item(2, 'Salad', 8.49);
+      Item item1 = Item(1, 'pizza', 15.99);
+      Item item2 = Item(2, 'Salad', 8.49);
 
   // Creating a menu
-  Menu menu = Menu(1, [item1, item2]);
+       Menu menu = Menu(1, [item1, item2]);
 
-   // Print out the menu items
-    menu.items.forEach((item) => print('Item ID: ${item.itemID}\nName: ${item.name}\nPrice: \$${item.price}\n---'));
+  // Creating a customer
+       Customer customer = Customer(1, 'Phinnaroth', 'naroth@gmail.com');
 
- // Creating an order in a shorter way
-  Order order = Order(1, customer.customerID, OrderStatus.pending, [], PaymentStatus.Unpaid, 0.0);
+  // Print out the menu items
+      menu.items.forEach((item) => print('Item ID: ${item.itemID}\nName: ${item.name}\nPrice: \$${item.price}\n---'));
+
+  // Creating an order 
+      Order order = Order(1, customer.customerID, OrderStatus.pending, [], PaymentStatus.Unpaid, 0.0);
 
   // Adding items to the order
-  order.addItem(item1);
-  order.addItem(item2);
+      order.addItem(item1);
+      order.addItem(item2);
 
   // Placing the order using the customer
-  customer.placeOrder(order);
+      customer.placeOrder(order);
 
   // Printing the order details
-  print('Order placed by ${customer.name}:');
-  print('Order ID: ${order.orderID}');
-  print('Order Status: ${order.getStatusAsString(order.orderStatus)}');
-  print('Total Amount: \$${order.totalAmount}');
+      print('Order placed by ${customer.name}:');
+      print('Order ID: ${order.orderID}');
+      print('Order Status: ${order.getStatusAsString(order.orderStatus)}');
+      print('Total Amount: \$${order.totalAmount}');
 
   // Creating a table reservation
-  TableReservation reservation = TableReservation(1, customer.customerID, ['T001', 'T002'], DateTime(2024, 10, 30, 18, 30), 4);
+      TableReservation reservation = TableReservation(1, customer.customerID, ['T001', 'T002'], DateTime(2024, 10, 30, 18, 30), 4);
 
   // Reserving a table using the customer
-  customer.reserveTable(reservation);
+      customer.reserveTable(reservation);
+  
+
 }
